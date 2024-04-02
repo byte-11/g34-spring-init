@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="cService" class="uz.pdp.xmlbasedconfig.CService" >
-<!--        <constructor-arg index="0" ref="cDao"/>-->
-<!--        <constructor-arg name="cDaoBean" ref="cDao"/>-->
-        <property name="cDao" ref="cDao"/>
-    </bean>
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:application.properties"/>
+    <bean id="cService" class="uz.pdp.xmlbasedconfig.CService"
+          c:cDaoBean-ref="cDao"
+    />
+    <!--        <constructor-arg index="0" ref="cDao"/>-->
+    <!--        <constructor-arg name="cDaoBean" ref="cDao"/>-->
+    <!--        <property name="cDao" ref="cDao"/>-->
+    <!--    </bean>-->
     <bean id="cDao" class="uz.pdp.xmlbasedconfig.CDao"/>
+    <!--<bean id="mailConfigProperties" class="uz.pdp.xmlbasedconfig.MailConfigProperties"
+          c:host="gmail"
+          c:port="587"
+          c:authentication="true"
+          c:username="a@gamil.com"
+          c:password="dasl adsa dada adps"
+    >-->
+    <!--<constructor-arg name="host" value="gmail"/>
+    <constructor-arg name="port" value="587"/>
+    <constructor-arg name="authentication" value="true" />
+    <constructor-arg name="username" value="a@gamil.com"/>
+    <constructor-arg name="password" value="dasl adsa dada adps"/> -->
+    <!--<constructor-arg name="defaultReceiver" >
+        <list>
+            <value>b@gmail.com</value>
+            <value>c@gmail.com</value>
+            <value>d@gmail.com</value>
+            <value>f@gmail.com</value>
+        </list>
+    </constructor-arg>
+    <constructor-arg name="languages" >
+        <map>
+            <entry key="UZ" value="Uzbek"/>
+            <entry key="RU" value="Russian" />
+            <entry key="EN" value="English" />
+        </map>
+    </constructor-arg>-->
+    <!--<property name="host" value="gmail"/>
+    <property name="port" value="587"/>
+    <property name="authentication" value="true" />
+    <property name="username" value="a@gamil.com"/>
+    <property name="password" value="dasl adsa dada adps"/>
+    <property name="defaultReceiver" >
+        <list>
+            <value>b@gmail.com</value>
+            <value>c@gmail.com</value>
+            <value>d@gmail.com</value>
+            <value>f@gmail.com</value>
+        </list>
+    </property>
+    <property name="languages" >
+        <map>
+            <entry key="UZ" value="Uzbek"/>
+            <entry key="RU" value="Russian" />
+            <entry key="EN" value="English" />
+        </map>
+    </property>-->
+    <!--        </bean>-->
+    <bean id="c2Service" class="uz.pdp.xmlbasedconfig.C2Service"
+          p:CDao-ref="cDao"
+    />
+
+    <bean id="c3Service" class="uz.pdp.xmlbasedconfig.C3Service" factory-method="getInstance"
+          init-method="init" destroy-method="destroy"
+    />
+    <bean id="datasourceConfigXMlBased" class="uz.pdp.xmlbasedconfig.DatasourceConfigXmlBased"
+          p:driver="${datasource.driver}"
+          p:url="${datasource.url}"
+    >
+        <property name="username">
+            <value>${datasource.username}</value>
+        </property>
+        <property name="password">
+            <value>${datasource.password}</value>
+        </property>
+    </bean>
 </beans>

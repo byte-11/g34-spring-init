@@ -3,8 +3,10 @@ package uz.pdp.javabasedconfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import({DatasourceConfigInJavaBased.class})
 public class JavaBasedConfig {
 
     /*@Bean
@@ -12,7 +14,7 @@ public class JavaBasedConfig {
         return new BService(bDao());
     }*/
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     public BService bService(BDao bDao){
         return new BService(bDao);
     }

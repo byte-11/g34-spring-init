@@ -1,6 +1,9 @@
 package uz.pdp.autoconfig;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
+import uz.pdp.javabasedconfig.BService;
 
 @Component
 public class AService {
@@ -22,4 +25,15 @@ public class AService {
     public void setaDao(ADao aDao) {
         this.aDao = aDao;
     }*/
+
+    @PostConstruct
+    public void init(){
+        System.out.println("[" + AService.class.getName() + "] init method called");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("[" + AService.class.getName() + "] destroy method called");
+    }
+
 }
