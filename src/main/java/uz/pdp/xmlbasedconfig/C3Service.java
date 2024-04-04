@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @RequiredArgsConstructor
 @ToString
-public class C3Service {
+public class C3Service implements XMLService{
 
     private final String action;
 

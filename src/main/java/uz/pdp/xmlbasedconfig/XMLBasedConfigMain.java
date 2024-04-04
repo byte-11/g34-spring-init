@@ -18,12 +18,14 @@ public class XMLBasedConfigMain {
 
         /*CDao cDao = context.getBean(CDao.class);
         cDao.accessData();*/
-        var datasourceConfig = context.getBean(DatasourceConfigXmlBased.class);
+        /*var datasourceConfig = context.getBean(DatasourceConfigXmlBased.class);
         System.out.println(datasourceConfig.getDriver());
         System.out.println(datasourceConfig.getUrl());
         System.out.println(datasourceConfig.getUsername());
         System.out.println(datasourceConfig.getPassword());
-        Thread.sleep(5000);
+        Thread.sleep(5000);*/
+        C4Service c4Service = context.getBean(C4Service.class);
+
         context.close();
     }
 }

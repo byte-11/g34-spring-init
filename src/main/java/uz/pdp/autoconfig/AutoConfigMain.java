@@ -19,13 +19,16 @@ public class AutoConfigMain {
 
         /*ADao aDao = context.getBean(ADao.class);
         aDao.accessData();*/
-        var datasourceConfig = context.getBean(DatasourceConfig.class);
+        /*var datasourceConfig = context.getBean(DatasourceConfig.class);
         System.out.println(datasourceConfig.getDriver());
         System.out.println(datasourceConfig.getUrl());
         System.out.println(datasourceConfig.getUsername());
         System.out.println(datasourceConfig.getPassword());
 
-        Thread.sleep(5000);
+        Thread.sleep(5000);*/
+
+        A3Service service = context.getBean(A3Service.class);
+
         context.close();
     }
 }

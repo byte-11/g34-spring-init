@@ -1,8 +1,6 @@
 package uz.pdp.xmlbasedconfig;
 
-import uz.pdp.javabasedconfig.BService;
-
-public class CService {
+public class CService implements XMLService{
 
     private final CDao cDao;
 

@@ -80,4 +80,7 @@
             <value>${datasource.password}</value>
         </property>
     </bean>
+    <bean id="c4Service" class="uz.pdp.xmlbasedconfig.C4Service"
+        p:service-ref="cService"
+    />
 </beans>

@@ -3,10 +3,9 @@ package uz.pdp.autoconfig;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
-import uz.pdp.javabasedconfig.BService;
 
 @Component
-public class AService {
+public class AService implements AutoConfigBasedService{
 
     private final ADao aDao;
 //    @Autowired
